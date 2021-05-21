@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
-    public float jumpForce;
 
-    public bool isJumping = false;
+    public Transform GroundedLeft;
+    public Transform GroundedRight;
 
     public Rigidbody2D rb;
     private Vector3 velocity = Vector3.zero;
 
+    public float jumpForce;
+    public bool isJumping;
+    public bool isGrounded;
+
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        isGrounded = Physics2D.OverlapArea(GroundedLeft.position, GroundedRight.position);
+
+        if(Input.GetButtonDown("Jump") && isGrounded == true)
         {
             isJumping = true;
         }
     }
 
-void FixedUpdate()
+    public float moveSpeed;
+
+    void FixedUpdate()
     {
         float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         MovePlayer(horizontalMovement);
-
-
     }
 
     void MovePlayer(float _horizontalMovement)
@@ -36,7 +41,6 @@ void FixedUpdate()
         if (isJumping == true)
         {
             rb.AddForce(new Vector2(0f, jumpForce));
-            isJumping = false;
         }
     }
 }

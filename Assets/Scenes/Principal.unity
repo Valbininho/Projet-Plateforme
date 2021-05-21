@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &560417586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 560417587}
+  m_Layer: 0
+  m_Name: GroundedRight
+  m_TagString: Player
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &560417587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560417586}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.25, y: -1.1300001, z: -1.7369903}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1508164172}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &583371118
 GameObject:
   m_ObjectHideFlags: 0
@@ -11027,6 +11057,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1503091084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1503091085}
+  m_Layer: 0
+  m_Name: GroundedLeft
+  m_TagString: Player
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1503091085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503091084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.1400001, y: -1.13, z: -1.7369903}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1508164172}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1508164167
 GameObject:
   m_ObjectHideFlags: 0
@@ -11037,9 +11097,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1508164172}
   - component: {fileID: 1508164171}
-  - component: {fileID: 1508164170}
   - component: {fileID: 1508164169}
   - component: {fileID: 1508164168}
+  - component: {fileID: 1508164173}
+  - component: {fileID: 1508164170}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -11060,7 +11121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030495763, y: -0.3743074}
+  m_Offset: {x: 0.030495763, y: -0.34256512}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -11071,7 +11132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9448459, y: 1.2513852}
+  m_Size: {x: 0.9448459, y: 1.1879007}
   m_EdgeRadius: 0
 --- !u!50 &1508164169
 Rigidbody2D:
@@ -11106,8 +11167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c2a7c96b6c1f24c8f60735fedf8f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 250
+  GroundedLeft: {fileID: 0}
+  GroundedRight: {fileID: 0}
   rb: {fileID: 1508164169}
+  jumpForce: 10
+  isJumping: 0
+  isGrounded: 1
+  moveSpeed: 250
 --- !u!212 &1508164171
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11169,7 +11235,25 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.54, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1503091085}
+  - {fileID: 560417587}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1508164173
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508164167}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.050000012, y: -0.600909}
+  serializedVersion: 2
+  m_Radius: 0.40008378
