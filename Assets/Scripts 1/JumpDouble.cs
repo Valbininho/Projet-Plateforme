@@ -6,16 +6,11 @@ public class JumpDouble : MonoBehaviour
 {
 
     public Rigidbody2D rb;
-    private Vector3 velocity = Vector3.zero;
+    /*private Vector3 velocity = Vector3.zero;*/
 
     public float jumpForce;
     public bool isJumping;
     //public bool isHitting;
-
-    void Start()
-    {
-
-    }
 
     /*void OnCollisionEnter2D(Collision2D collision)
     {
@@ -27,20 +22,21 @@ public class JumpDouble : MonoBehaviour
         Debug.Log("Collisions avec " + collision.gameObject.name);
     }
     */
-
-    void Update()
+    void FixedUpdate()
     {
-
-        if (Input.GetButtonDown("Jump") /*&& isHitting == true*/) ;
+        if (Input.GetButtonDown("Jump")/* && isHitting == true*/)
         {
             isJumping = true;
         }
+        else
+        {
+            isJumping = false;
+        }
+        Debug.Log("Activation" + isJumping);
 
         if (isJumping == true)
         {
             rb.AddForce(new Vector2(0f, jumpForce));
-            /*isJumping = false;*/
         }
-
     }
 }

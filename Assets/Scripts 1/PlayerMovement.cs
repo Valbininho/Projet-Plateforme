@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+
+    public Animator anim;
+
     private Vector3 velocity = Vector3.zero;
 
     public float Speed;
     public float moveSpeed;
     public float RunSpeed;
     public bool isRunning;
-
 
     void FixedUpdate()
     {
@@ -36,4 +38,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 targetVelocity = new Vector2(_horizontalMovement, rb.velocity.y);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
     }
+
+    /*float characterVelocity = Mathf.Abs(rb.velocity.x);
+    anim.SetFloat"Marche",characterVelocity*/
+
 }
